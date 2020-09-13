@@ -1,13 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './Component/Header/Header';
 import Shop from './Component/Shop/Shop';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Review from './Component/Review/Review';
 import Inventory from './Component/Inventory/Inventory';
