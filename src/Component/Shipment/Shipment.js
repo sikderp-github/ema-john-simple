@@ -5,12 +5,12 @@ import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import './Shipment.css'
 
 const Shipment = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const { register, handleSubmit, errors } = useForm();
+    const [loggedInUser] = useContext(UserContext);
     const onSubmit = data => {
         const savedCart = getDatabaseCart();
         const orderDetails = { ...loggedInUser, products: savedCart, shipment: data, orderTime: new Date() };
-        fetch('http://localhost:4000/addOrder', {
+        fetch('https://stormy-inlet-11194.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

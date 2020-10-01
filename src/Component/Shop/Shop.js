@@ -11,7 +11,7 @@ const Shop = () => {
 
     //load data from backend server
     useEffect(() => {
-        fetch('http://localhost:4000/products')
+        fetch('https://stormy-inlet-11194.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     })
@@ -20,7 +20,7 @@ const Shop = () => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
         //if products are loaded from backend server, then do this
-        fetch('http://localhost:4000/productByKeys', {
+        fetch('https://stormy-inlet-11194.herokuapp.com/productByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -31,14 +31,19 @@ export const handleGoogleSignIn = () => {
 }
 
 
-
 export const handleFbSignIn = () => {
     let fbProvider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(fbProvider)
         .then(res => {
-            let user = res.user;
-            user.success = true;
-            return user;
+            const { displayName, email, photoURL } = res.user;
+            const signedInUser = {
+                isSignedIn: true,
+                name: displayName,
+                email: email,
+                photo: photoURL,
+                success: true
+            }
+            return signedInUser;
         })
         .catch(error => {
             var errorCode = error.code;
@@ -66,11 +71,15 @@ export const handleSignOut = () => {
 export const createUserWithEmailAndPassword = (name, email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
-            const newUserInfo = res.user;
-            newUserInfo.error = '';
-            newUserInfo.success = true;
+            const { displayName, email } = res.user;
+            const signedInUser = {
+                isSignedIn: true,
+                name: displayName,
+                email: email,
+                success: true
+            }
             updateUserName(name);
-            return newUserInfo;
+            return signedInUser;
         })
         .catch(error => {
             const newUserInfo = {}
@@ -83,10 +92,14 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
 export const signInWithEmailAndPassword = (email, password) => {
     return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
-            const newUserInfo = res.user;
-            newUserInfo.error = '';
-            newUserInfo.success = true;
-            return newUserInfo;
+            const { displayName, email } = res.user;
+            const signedInUser = {
+                isSignedIn: true,
+                name: displayName,
+                email: email,
+                success: true
+            }
+            return signedInUser;
         })
         .catch(error => {
             const newUserInfo = {}

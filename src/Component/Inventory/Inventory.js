@@ -3,7 +3,7 @@ import React from 'react';
 const Inventory = () => {
     const handleAddProducts = () => {
         const product = {}; //to get data from the form below
-        fetch('http://localhost:4000/addProducts', {
+        fetch('https://stormy-inlet-11194.herokuapp.com/addProducts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
