@@ -22,4 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/Login/firebase.config.js
+src/Component/Login/firebase.config.js
+firebase.json
